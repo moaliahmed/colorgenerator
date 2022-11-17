@@ -3,18 +3,23 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ColorComponents extends StatelessWidget {
-   ColorComponents({this.clor=Colors.black});
-Color clor;
-  
+  ColorComponents({required this.clor});
+  var clor;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-              height: 250,
-              width: 250,
-              decoration: BoxDecoration(
-                color: clor,   borderRadius: BorderRadius.circular(999)),
-            ),
+    return Column(
+      children: [
+        Container(
+          height: 110,
+          width: 120,
+          decoration: BoxDecoration(
+            color: clor,
+            borderRadius: BorderRadius.circular(990),
+          ),
+        ),
+        Text('$clor',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
+      ],
     );
   }
 }

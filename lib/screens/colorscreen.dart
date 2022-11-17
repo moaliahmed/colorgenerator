@@ -8,41 +8,65 @@ import 'dart:math';
 class ColorScreen extends StatefulWidget {
   @override
   State<ColorScreen> createState() => _ColorScreenState();
-
-  
 }
 
 class _ColorScreenState extends State<ColorScreen> {
   @override
- var clor;
- List<Color> ?hexcolor;
+  void initState() {
+    hexcolor = fun();
+  }
+
+  @override
+  var clor;
+  List<Color>? hexcolor;
 
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: 250,
+             
               width: double.infinity,
-              child: Row(
+              child: Column(
                 
                 children: [
-                  ColorComponents(clor: hexcolor![0]),
-                
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      
+                      ColorComponents(clor: hexcolor![0]),
+                      ColorComponents(clor: hexcolor![1]),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ColorComponents(clor: hexcolor![2]),
+                      ColorComponents(clor: hexcolor![3]),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ColorComponents(clor: hexcolor![4]),
+                      ColorComponents(clor: hexcolor![5])
+                    ],
+                  ),
+                  
                 ],
               ),
             ),
-            Text('${hexcolor ?[0]}',style: TextStyle(fontSize: 32),),
-            ElevatedButton(onPressed: () {
-              setState(() {
-                hexcolor=fun();
-               
-                 //clor=Color(int.parse(fun()));
-              });
-            }, child: Text('Rondam'))
+           
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    hexcolor = fun();
+                  });
+                },
+                child: Text('Rondam',style: TextStyle(fontSize: 32),))
           ],
         ),
       ),
@@ -50,7 +74,7 @@ class _ColorScreenState extends State<ColorScreen> {
   }
 }
 
-  fun() {
+fun() {
   final random = new Random();
 
   var colr = ColorList[random.nextInt(ColorList.length)];
